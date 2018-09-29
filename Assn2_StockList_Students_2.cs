@@ -18,15 +18,15 @@ namespace Assignment_2
             StockNode currentTwo = listToMerge.head;
             while (currentOne != null)
             {
-                //resultList.AddStock(currentOne.StockHolding);  //A bug in mergeList()
-                while (currentTwo != null)
-                {
-                    resultList.AddStock(currentTwo.StockHolding);
-                    currentTwo = currentTwo.Next;
-                }
                 resultList.AddStock(currentOne.StockHolding);
                 currentOne = currentOne.Next;
             }
+            while (currentTwo != null)
+            {
+                resultList.AddStock(currentTwo.StockHolding);
+                currentTwo = currentTwo.Next;
+            }
+
             return resultList;
         }
 

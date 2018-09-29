@@ -228,19 +228,29 @@ namespace Assignment_2
         //return type  : NA
         public void SortByValue()
         {
-            int round = this.Length();
+            //define "round" as a variable to record loop times.
+            //Any unordered lists can be sorted to be ordered 
+            //in up to loop through "list.Length()-1" times. 
+            int round = this.Length() - 1;
             StockNode current = this.head;
-            for (int i = 0; i < round - 1; i++)
+            //loop "round" times, sort from maxminum to mininum        
+            for (int i = 0; i < round; i++)
             {
+                //traversing and comparing each element on each loop 
                 while (current.Next != null)
                 {
                     decimal curHoldings = current.StockHolding.Holdings;
                     decimal nextHoldings = current.Next.StockHolding.Holdings;
-                    if (curHoldings > nextHoldings)
+                    //compare each pair of current and next
+                    //if the value of current is greater than next, 
+                    //they exchange positions with each other
+                    if (curHoldings > nextHoldings)                
                         this.Swap(current.StockHolding);
+                    // if not, stay, and check the next pair
                     else
                         current = current.Next;
                 }
+                //set current point to head and loop again
                 current = this.head;
             }
         }
@@ -251,9 +261,10 @@ namespace Assignment_2
         //return type  : NA
         public void SortByName()
         {
-            int round = this.Length();
+            //same with the above "SortByValue()" algorithm
+            int round = this.Length() - 1;
             StockNode current = this.head;
-            for (int i = 0; i < round-1; i++)
+            for (int i = 0; i < round; i++)
             {
                 while (current.Next != null)
                 {
