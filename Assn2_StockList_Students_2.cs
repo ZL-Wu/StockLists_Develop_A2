@@ -13,21 +13,23 @@ namespace Assignment_2
         //return type  : StockList
         public StockList MergeList(StockList listToMerge)
         {
-            StockList resultList = new StockList();
+            StockList mergedList = new StockList();
             StockNode currentOne = this.head;
             StockNode currentTwo = listToMerge.head;
+            // traverse the first list till the end and add the nodes to merged list
             while (currentOne != null)
             {
-                resultList.AddStock(currentOne.StockHolding);
+                mergedList.AddStock(currentOne.StockHolding);
                 currentOne = currentOne.Next;
             }
+            // traverse the second list till the end, also add the nodes to merged list
             while (currentTwo != null)
             {
-                resultList.AddStock(currentTwo.StockHolding);
+                mergedList.AddStock(currentTwo.StockHolding);
                 currentTwo = currentTwo.Next;
             }
 
-            return resultList;
+            return mergedList;
         }
 
         //param        : NA
@@ -39,10 +41,13 @@ namespace Assignment_2
             Stock mostShareStock = null;
             StockNode current = this.head;
             StockNode most = this.head;
+            // traverse the list till the end
             while(current != null)
             {
+                // start with class StockNode, get access of class Stock to get the value of currentHoldings
                 decimal currentHoldings = current.StockHolding.Holdings;
                 decimal mostHoldings = most.StockHolding.Holdings;
+                // compare currentHoldings and mostHodings to find the stock with most of number of holdings
                 if (currentHoldings > mostHoldings)
                     most = current;
                 current = current.Next;
@@ -59,6 +64,7 @@ namespace Assignment_2
         {
             int length = 0;
             StockNode current = this.head;
+            //traverse the list till the end, return the length to find the number of presented notes
             while(current != null)
             {
                 current = current.Next;
