@@ -26,7 +26,7 @@ namespace Assignment_2
             Console.WriteLine("**************************Client-1 Portfolio*****************************************");
             client1.StockList.Print();
             Console.WriteLine("\nNumber of shares :" + client1.StockList.Length());
-            Console.WriteLine("Current value of protfolio for client 1 :" + client1.PortfolioValue);
+            Console.WriteLine("Current value of protfolio for client 1 :" + client1.StockList.Value());
             Console.WriteLine("Stock with most shares for client 1:" + client1.StockList.MostShares());
             client1.StockList.SortByValue();
             Console.WriteLine("\nPortfolio sorted in descending order by number of holdings for client 1:");
@@ -42,7 +42,7 @@ namespace Assignment_2
 
             client2.StockList.Print();
             Console.WriteLine("\nNumber of shares :" + client2.StockList.Length());
-            Console.WriteLine("Current value of protfolio for client 2 :" + client2.PortfolioValue);
+            Console.WriteLine("Current value of protfolio for client 2 :" + client2.StockList.Value());
             Console.WriteLine("Stock with most shares for client 2 :" + client2.StockList.MostShares());
             client2.StockList.SortByValue();
             Console.WriteLine("\nPortfolio sorted in descending order by number of holdings for client 2:");
