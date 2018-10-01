@@ -32,6 +32,7 @@ namespace Assignment_2
         public int Similarity(StockList listToCompare)
         {
             int similarityIndex = 0;
+            //setup stocknode one & two, in order to record two different lists
             StockNode currentone = this.head;
             StockNode currenttwo = listToCompare.head;
             while (currentone != null)
@@ -46,6 +47,7 @@ namespace Assignment_2
                 }
                 currenttwo = listToCompare.head;
                 currentone = currentone.Next;
+                //traverse the loop till the end, find similarity in two different lists
             }
 
             return similarityIndex;
@@ -62,6 +64,7 @@ namespace Assignment_2
             {
                 Console.WriteLine(current.StockHolding.ToString());
                 current = current.Next;
+              //print all nodes in one list   
             }
         }
     }
