@@ -38,7 +38,10 @@ namespace Assignment_2
         //return type  : Stock
         public Stock MostShares()
         {
-            Stock mostShareStock = null;
+            // when stocklist is empty 
+            if (this.IsEmpty())
+                return new Stock();
+            Stock mostShareStock = new Stock();
             StockNode current = this.head;
             StockNode most = this.head;
             // traverse the list till the end
