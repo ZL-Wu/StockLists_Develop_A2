@@ -102,31 +102,26 @@ namespace Assignment_2
                     }
 
                     // we have now traversed all stocks that are alphabetically less than the stock to be added
-                    if (current.Next != null)
+                    // if the stock already exists, add to holdings
+                    if (currentStockName.CompareTo(nameOfStockToAdd) == 0)
                     {
-                        // if the stock already exists, add to holdings
-                        if (currentStockName.CompareTo(nameOfStockToAdd) == 0)
-                        {
-                            decimal holdings = (current.StockHolding).Holdings + stock.Holdings;
-                            current.StockHolding.Holdings = holdings;
-                        }
-                        else if (currentStockName.CompareTo(nameOfStockToAdd) > 0)
-                        {
-                            // insert the stock in the current position. This requires creating a new node,
-                            //  pointing the new node to the next node
-                            //    and pointing the previous node to the current node
-                            //  QUESTION: what would happen if we flipped the sequence of assignments below?
-                            StockNode newNode = new StockNode(stock);
-                            newNode.Next = current;
-                            previous.Next = newNode;
-                        }
+                        decimal holdings = (current.StockHolding).Holdings + stock.Holdings;
+                        current.StockHolding.Holdings = holdings;
+                    }
+                    else if (currentStockName.CompareTo(nameOfStockToAdd) > 0)
+                    {
+                        // insert the stock in the current position. This requires creating a new node,
+                        //  pointing the new node to the next node
+                        //    and pointing the previous node to the current node
+                        //  QUESTION: what would happen if we flipped the sequence of assignments below?
+                        StockNode newNode = new StockNode(stock);
+                        newNode.Next = current;
+                        previous.Next = newNode;
                     }
                     else
                     {
-                        // we are at the end of the list, add the stock at the end
-                        //  This is probably not the most efficient way to do it,
-                        //  since AddLast traverses the list all over again
-                        AddLast(stock);
+                        StockNode newNode = new StockNode(stock);
+                        current.Next = newNode;
                     }
                 }
             }
@@ -233,7 +228,7 @@ namespace Assignment_2
             //in up to loop through "list.Length()-1" times. 
             int round = this.Length() - 1;
             StockNode current = this.head;
-            //loop "round" times, sort from maxminum to mininum        
+            //loop "round" times, sort from minimum to maximum        
             for (int i = 0; i < round; i++)
             {
                 //traversing and comparing each element on each loop 
@@ -242,9 +237,9 @@ namespace Assignment_2
                     decimal curHoldings = current.StockHolding.Holdings;
                     decimal nextHoldings = current.Next.StockHolding.Holdings;
                     //compare each pair of current and next
-                    //if the value of current is greater than next, 
+                    //if the value of current is less than next, 
                     //they exchange positions with each other
-                    if (curHoldings > nextHoldings)                
+                    if (curHoldings < nextHoldings)                
                         this.Swap(current.StockHolding);
                     // if not, stay, and check the next pair
                     else
