@@ -12,8 +12,10 @@ namespace Assignment_2
         //return type  : decimal
         public decimal Value()
         {
+            //if value = 0.0, excutive stocknode
             decimal value = 0.0m;
             StockNode current = this.head;
+            //traverse the loop till the end, return the total value as a decimal
             while (current != null)
             {
                 decimal currentholdings = current.StockHolding.Holdings;
