@@ -16,14 +16,13 @@ namespace Assignment_2
             StockNode current = this.head;
             while (current != null)
             {
-                decimal currentHoldings = current.StockHolding.Holdings;
-                decimal currentPrices = current.StockHolding.CurrentPrice;
-                value += currentHoldings * currentPrices;
+                decimal currentholdings = current.StockHolding.Holdings;
+                decimal currentprices = current.StockHolding.CurrentPrice;
+                value += currentholdings * currentprices;
                 current = current.Next;
             }
             return value;
         }
-
         //param  (StockList) listToCompare     : StockList which has to comared for similarity index
         //summary      : finds the similar number of nodes between two lists
         //return       : similarty index
@@ -31,21 +30,22 @@ namespace Assignment_2
         public int Similarity(StockList listToCompare)
         {
             int similarityIndex = 0;
-            StockNode currentOne = this.head;
-            StockNode currentTwo = listToCompare.head;
-            while (currentOne != null)
+            StockNode currentone = this.head;
+            StockNode currenttwo = listToCompare.head;
+            while (currentone != null)
             {
-                while (currentTwo != null)
+                while (currenttwo != null)
                 {
-                    string currentName = currentOne.StockHolding.Name;
-                    string compareName = currentTwo.StockHolding.Name;
-                    if (currentName.CompareTo(compareName) == 0)
+                    string currentname = currentone.StockHolding.Name;
+                    string comparename = currenttwo.StockHolding.Name;
+                    if (currentname.CompareTo(comparename) == 0)
                         similarityIndex++;
-                    currentTwo = currentTwo.Next;
+                    currenttwo = currenttwo.Next;
                 }
-                currentTwo = listToCompare.head;
-                currentOne = currentOne.Next;
+                currenttwo = listToCompare.head;
+                currentone = currentone.Next;
             }
+
             return similarityIndex;
         }
 
